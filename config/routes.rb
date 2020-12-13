@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
+  resources :cards
+  resources :lists
   namespace :admin do
       resources :users
 
       root to: "users#index"
   end
 
-  devise_for :users
+  resources :cards
+  resources :lists
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'home#index'
+  devise_for :users, controllers: {
+      sessions: 'users/sessions',
+      registrations:'users/registrations'
+  }
+
+  root 'lists#index'
   get 'terms', to: 'home#terms'
 end

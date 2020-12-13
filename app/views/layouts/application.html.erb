@@ -47,7 +47,11 @@
     <% end %>
 
     <div class="container">
-        <%= yield %>
+        <section class="section">
+            <div class="box">
+                <%= yield %>
+            </div>
+        </section>
     </div>
     <%= render 'components/footer' %>
   </body>

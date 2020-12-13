@@ -2,27 +2,25 @@
     <%= stylesheet_link_tag 'authform', media: 'all', 'data-turbolinks-track': 'reload' %>
 <% end %>
 
-<section class="section">
-    <div class="form-wrap">
-        <div class="tabs">
-            <h3 class="signup-tab"><a href="/users/sign_up">Sign Up</a></h3>
-            <h3 class="login-tab"><a href="/users/sign_in">Login</a></h3>
-        </div><!--.tabs-->
+<div class="form-wrap">
+    <div class="tabs">
+        <h3 class="signup-tab"><a href="/users/sign_up">Sign Up</a></h3>
+        <h3 class="login-tab"><a href="/users/sign_in">Login</a></h3>
+    </div><!--.tabs-->
 
-        <div class="tabs-content">
-            <h2 class="title is-5">Reset your password</h2>
+    <div class="tabs-content">
+        <h2 class="title is-5">Reset your password</h2>
 
-            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-              <%= render "devise/shared/error_messages", resource: resource %>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-              <div class="field">
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'input', placeholder: 'Email' %>
-              </div>
+          <div class="field">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'input', placeholder: 'Email' %>
+          </div>
 
-              <div class="actions">
-                <%= f.submit "Send me password reset", :class => 'button is-primary'  %>
-              </div>
-            <% end %>
-        </div>
+          <div class="actions">
+            <%= f.submit "Send me password reset", :class => 'button is-primary'  %>
+          </div>
+        <% end %>
     </div>
-</section>
+</div>
