@@ -1,9 +1,7 @@
 <template>
-  <draggable :list="lists" :options="{group: 'lists'}" class="columns dragArea" @end="listMoved">
-    <div v-for="(list, index) in original_lists" class="column is-3">
+  <draggable :list="lists" :options="{group: 'lists'}" class="columns dragArea board" @end="listMoved">
+    <div v-for="(list, index) in original_lists" class="column is-3 list">
       <h6 class="title is-6">{{ list.name }}</h6>
-
-      <hr />
 
       <draggable v-model="list.cards" :options="{group: 'cards'}" class="dragArea" @change="cardMoved">
         <div v-for="(card, index) in list.cards" class="card card-content">
@@ -11,14 +9,10 @@
         </div>
       </draggable>
 
-      <br />
+      <div class="card-footer">
+        <textarea v-model="messages[list.id]" class="textarea" rows="2" placeholder="New item"></textarea>
 
-      <div class="card">
-        <div class="card-content">
-          <textarea v-model="messages[list.id]" class="textarea" rows="2"></textarea>
-
-          <button @click="submitMessages(list.id)" class="button is-primary" style="width:100%; margin-top: 10px">Add</button>
-        </div>
+        <button @click="submitMessages(list.id)" class="button is-primary">Add</button>
       </div>
     </div>
   </draggable>
@@ -97,6 +91,6 @@ export default {
 
 <style scoped>
 .dragArea {
-  min-height: 20px;
+  min-height: 10px;
 }
 </style>
