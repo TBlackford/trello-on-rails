@@ -5,9 +5,11 @@
 
       <hr />
 
-      <div v-for="(card, index) in list.cards" class="card card-content">
-        {{ card.name }}
-      </div>
+      <draggable v-model="list.cards" :options="{group: 'cards'}" class="dragArea" @change="cardMoved">
+        <div v-for="(card, index) in list.cards" class="card card-content">
+          {{ card.name }}
+        </div>
+      </draggable>
 
       <br />
 
@@ -36,6 +38,30 @@ export default {
     }
   },
   methods: {
+    cardMoved: function (event) {
+      const evt = event.added || event.moved;
+      if(evt === undefined) { return }
+
+      const element = evt.element;
+
+      const list_index = this.lists.findIndex((list) => {
+        return list.cards.find((card) => {
+          return card.id === element.id;
+        });
+      });
+
+      var data = new FormData;
+      data.append("card[list_id]", this.lists[list_index].id);
+      data.append("card[position]", evt.newIndex + 1);
+
+      Rails.ajax({
+        url: `/cards/${element.id}/move`,
+        type: 'PATCH',
+        data: data,
+        dataType: 'json'
+      })
+    },
+
     listMoved: function(event) {
       var data = new FormData;
       data.append("list[position]", event.newIndex + 1);
@@ -49,7 +75,6 @@ export default {
     },
 
     submitMessages: function(list_id) {
-      console.log(list_id);
       var data = new FormData;
       data.append("card[list_id]", list_id);
       data.append("card[name]", this.messages[list_id]);
