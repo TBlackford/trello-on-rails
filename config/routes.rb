@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   end
 
   resources :cards
-  resources :lists
+  resources :lists do
+      member do
+          patch :move
+      end
+  end
 
   devise_for :users, controllers: {
       sessions: 'users/sessions',
