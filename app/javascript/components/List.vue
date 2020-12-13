@@ -3,14 +3,12 @@
     <h6 class="title is-6">{{ list.name }}</h6>
 
     <draggable v-model="list.cards" :options="{group: 'cards'}" class="dragArea" @change="cardMoved">
-      <div v-for="(card, index) in list.cards" class="card card-content">
-        {{ card.name }}
-      </div>
+      <Card v-for="card in list.cards" :card="card" :list="list" />
     </draggable>
 
     <div class="card-footer">
       <textarea v-if="editing" v-model="message" ref="message" class="textarea" rows="2" placeholder="New item"></textarea>
-      <button  v-if="editing" @click="submitMessage" class="button is-primary">Add</button>
+      <button v-if="editing" @click="submitMessage" class="button is-primary">Add</button>
       <a v-if="!editing" v-on:click="startEditing" >Add a card</a>
       <a v-if="editing" v-on:click="editing=false" class="cancel-button">Cancel</a>
     </div>
@@ -18,14 +16,15 @@
 </template>
 
 <script>
-
 import draggable from 'vuedraggable';
 import Rails from "rails-ujs";
+
+import Card from 'components/Card'
 
 export default {
   name: "List",
   props: ['list'],
-  components: { draggable },
+  components: { draggable, Card },
   data: function () {
     return {
       editing: false,
@@ -37,6 +36,7 @@ export default {
       this.editing = true;
       this.$nextTick(() => {this.$refs.message.focus() })
     },
+
     submitMessage: function() {
       var data = new FormData;
       data.append("card[list_id]", this.list.id);
@@ -47,9 +47,10 @@ export default {
         data: data,
         dataType: 'json',
         success: (data) => {
-          const index = window.store.lists.findIndex(item => item.id == this.list.id);
+          const index = window.store.lists.findIndex(item => item.id === this.list.id);
           window.store.lists[index].cards.push(data);
           this.message = "";
+          this.$nextTick(() => { this.$refs.message.focus })
         }
       })
     },
@@ -82,8 +83,5 @@ export default {
 </script>
 
 <style scoped>
-.cancel-button {
-  margin-top: 15px;
-  display: inline-flex;
-}
+
 </style>
