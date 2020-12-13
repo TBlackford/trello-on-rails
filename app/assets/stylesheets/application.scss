@@ -20,6 +20,11 @@ body {
   background-color: #f14668!important;
 }
 
+.card {
+  box-shadow: unset;
+  border: #ddd solid 1px;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
