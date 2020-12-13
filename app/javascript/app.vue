@@ -1,11 +1,11 @@
 <template>
   <draggable :list="lists" :options="{group: 'lists'}" class="columns dragArea board" @end="listMoved">
-    <List v-for="(list, index) in original_lists" :list="list" />
+    <List v-for="(list, index) in lists" :list="list" />
 
     <div class="column is-3 list new-list">
       <div class="card-footer">
         <textarea v-if="editing" v-model="message" ref="message" class="textarea" rows="2" placeholder="New item"></textarea>
-        <button  v-if="editing" @click="submitMessage" class="button is-primary">Add</button>
+        <button  v-if="editing" @click="createList" class="button is-primary">Add</button>
         <a v-if="!editing" v-on:click="startEditing" >Add a list</a>
         <a v-if="editing" v-on:click="editing=false" class="cancel-button">Cancel</a>
       </div>
@@ -20,13 +20,17 @@ import draggable from 'vuedraggable';
 import List from 'components/List';
 
 export default {
-  props: ["original_lists"],
   components: { draggable, List },
   data: function () {
     return {
-      lists: this.original_lists,
       editing: false,
       message: ""
+    }
+  },
+  computed: {
+    lists() {
+      console.log(this.$store.state.lists);
+      return this.$store.state.lists;
     }
   },
   methods: {
@@ -45,7 +49,7 @@ export default {
       this.editing = true;
       this.$nextTick(() => {this.$refs.message.focus() })
     },
-    submitMessage: function() {
+    createList: function() {
       var data = new FormData;
       data.append("list[name]", this.message);
       Rails.ajax({
@@ -54,7 +58,6 @@ export default {
         data: data,
         dataType: 'json',
         success: (data) => {
-          window.store.lists.push(data);
           this.message = "";
           this.editing = false;
         }

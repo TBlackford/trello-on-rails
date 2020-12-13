@@ -3,14 +3,11 @@
         body {
             background-color: #fff!important;
         }
+
+        .container {
+            margin-top: 40px;
+        }
     </style>
 <% end %>
 
-<section class="section">
-    <h1 class="title is-3">Lists</h1>
-
-    <hr />
-
-    <%= tag.div id: :boards, data: { lists: @lists.to_json(include: :cards) } %>
-
-</section>
+<%= tag.div id: :boards, data: { lists: @lists.to_json(include: :cards) } %>
