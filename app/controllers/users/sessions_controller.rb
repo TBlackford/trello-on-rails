@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  layout 'devise_app'
+  layout 'no_box_application'
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

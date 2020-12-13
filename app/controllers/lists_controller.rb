@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
+  layout 'no_box_application'
 
   # GET /lists
   # GET /lists.json
