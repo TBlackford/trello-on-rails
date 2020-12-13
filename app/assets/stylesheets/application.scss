@@ -1,0 +1,31 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,300);
+
+@import 'bulma/bulma.sass';
+
+$primary: #28A55F;
+$primary-invert: findColorInvert(#28A55F);
+$primary-light: findLightColor(#28A55F);
+
+body {
+  height: 100vh;
+  font-family: Raleway;
+  background-color: #f1f2f2;
+}
+
+.navbar {
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+}
+
+.button.is-danger {
+  background-color: #f14668!important;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+
+  background-color: #3b4045;
+  color: #eee;
+}
