@@ -4,7 +4,7 @@
 
     <div class="column is-3 list new-list">
       <div class="card-footer">
-        <textarea v-if="editing" v-model="message" ref="message" class="textarea" rows="2" placeholder="New item"></textarea>
+        <textarea v-if="editing" v-model="message" ref="message" class="textarea" rows="2" placeholder="New item" />
         <button  v-if="editing" @click="createList" class="button is-primary">Add</button>
         <a v-if="!editing" v-on:click="startEditing" >Add a list</a>
         <a v-if="editing" v-on:click="editing=false" class="cancel-button">Cancel</a>

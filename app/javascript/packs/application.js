@@ -34,7 +34,6 @@ window.store = new Vuex.Store({
             state.lists.push(data);
         },
         addCard(state, data) {
-            console.log(data);
             const index = state.lists.findIndex(item => item.id === data.list_id);
             state.lists[index].cards.push(data);
         },

@@ -25,6 +25,9 @@ body {
   vertical-align: top;
   display: inline-table;
   max-width: 300px;
+  min-width: 250px;
+  max-height: 60%;
+  overflow-y: scroll;
 }
 
 .new-list {

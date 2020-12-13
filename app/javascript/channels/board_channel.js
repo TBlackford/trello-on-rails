@@ -10,9 +10,7 @@ consumer.subscriptions.create("BoardChannel", {
   },
 
   received(data) {
-    console.log(data);
     if(data.commit) {
-      console.log(data);
       window.store.commit(data.commit, JSON.parse(data.payload));
     }
   }
