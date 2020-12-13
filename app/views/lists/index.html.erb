@@ -9,16 +9,10 @@
 <section class="section">
     <h1 class="title is-3">Lists</h1>
 
-    <div class="columns">
-        <% @lists.each do |list| %>
-        <div class="column is-3">
-            <h5 class="title is-5"><%= list.name %></h5>
-        </div>
-        <% end %>
-    </div>
-
-    <br>
-
     <%= link_to 'New List', new_list_path %>
+
+    <hr />
+
+    <%= tag.div id: :boards, data: { lists: @lists.to_json(include: :cards) } %>
 
 </section>
