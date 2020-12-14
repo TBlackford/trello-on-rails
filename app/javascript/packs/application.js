@@ -45,16 +45,16 @@ window.store = new Vuex.Store({
     }
 });
 
-document.addEventListener('turbolinks:load', function() {
+document.addEventListener('turbolinks:load', function () {
     var element = document.querySelector("#boards");
-    if(element !== undefined) {
+    if (element !== undefined) {
         window.store.state.lists = JSON.parse(element.dataset.lists);
 
         const app = new Vue({
             el: element,
             store: window.store,
             template: "<App />",
-            components: { App }
+            components: {App}
         })
     }
 });

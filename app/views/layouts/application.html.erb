@@ -18,15 +18,17 @@
     </script>
 
     <style>
-    <% if alert or notice %>
-        .notification {
-            display: block;
-        }
-    <% else %>
-    .notification {
-        display: none;
-    }
-    <% end %>
+      <% if alert or notice %>
+      .notification {
+          display: block;
+      }
+
+      <% else %>
+      .notification {
+          display: none;
+      }
+
+      <% end %>
     </style>
   </head>
 
@@ -34,25 +36,25 @@
     <%= render 'components/navbar' %>
 
     <% if notice %>
-    <div class="notification is-success">
+      <div class="notification is-success">
         <button class="delete" onclick="hideAllNotifications(this)"></button>
         <%= notice %>
-    </div>
+      </div>
     <% end %>
 
     <% if alert %>
-    <div class="notification is-danger">
+      <div class="notification is-danger">
         <button class="delete" onclick="hideAllNotifications(this)"></button>
         <%= alert %>
-    </div>
+      </div>
     <% end %>
 
     <div class="container">
-        <section class="section">
-            <div class="box">
-                <%= yield %>
-            </div>
-        </section>
+      <section class="section">
+        <div class="box">
+          <%= yield %>
+        </div>
+      </section>
     </div>
     <%= render 'components/footer' %>
   </body>

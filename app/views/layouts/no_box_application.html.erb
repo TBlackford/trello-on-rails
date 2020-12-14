@@ -1,54 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Rails Boilerplate</title>
-        <%= csrf_meta_tags %>
-        <%= csp_meta_tag %>
+  <head>
+    <title>Rails Boilerplate</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-        <%= yield :styles %>
+    <%= yield :styles %>
 
-        <script>
-            const hideAllNotifications = (el) => {
-                el.parentNode.parentNode.removeChild(el.parentNode);
-            }
-        </script>
+    <script>
+        const hideAllNotifications = (el) => {
+            el.parentNode.parentNode.removeChild(el.parentNode);
+        }
+    </script>
 
-        <style>
-            <% if alert or notice %>
-            .notification {
-                display: block;
-            }
-            <% else %>
-            .notification {
-                display: none;
-            }
-            <% end %>
-        </style>
-    </head>
+    <style>
+      <% if alert or notice %>
+      .notification {
+          display: block;
+      }
 
-    <body>
-        <%= render 'components/navbar' %>
+      <% else %>
+      .notification {
+          display: none;
+      }
 
-        <% if notice %>
-            <div class="notification is-success">
-                <button class="delete" onclick="hideAllNotifications(this)"></button>
-                <%= notice %>
-            </div>
-        <% end %>
+      <% end %>
+    </style>
+  </head>
 
-        <% if alert %>
-            <div class="notification is-danger">
-                <button class="delete" onclick="hideAllNotifications(this)"></button>
-                <%= alert %>
-            </div>
-        <% end %>
+  <body>
+    <%= render 'components/navbar' %>
 
-        <div class="container">
-            <%= yield %>
-        </div>
-        <%= render 'components/footer' %>
-    </body>
+    <% if notice %>
+      <div class="notification is-success">
+        <button class="delete" onclick="hideAllNotifications(this)"></button>
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div class="notification is-danger">
+        <button class="delete" onclick="hideAllNotifications(this)"></button>
+        <%= alert %>
+      </div>
+    <% end %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+    <%= render 'components/footer' %>
+  </body>
 </html>

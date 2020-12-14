@@ -1,51 +1,55 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
+  <div class="navbar-brand">
 
-        <%= link_to '/', :class => 'navbar-item' do %>
-            <h5 class="title is-5">Ruby Boilerplate</h5>
-        <% end %>
+    <%= link_to '/', :class => 'navbar-item' do %>
+      <h5 class="title is-5">Ruby Boilerplate</h5>
+    <% end %>
 
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+
+      <%= link_to 'Home', '/', :class => 'navbar-item' %>
+      <%= link_to 'Documentation', '/docs', :class => 'navbar-item' %>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
+    <div class="navbar-end">
+      <% if user_signed_in? %>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">
+            <%= current_user.email %>
 
-            <%= link_to 'Home', '/', :class => 'navbar-item' %>
-            <%= link_to 'Documentation', '/docs', :class => 'navbar-item' %>
-        </div>
-
-        <div class="navbar-end">
-            <% if user_signed_in? %>
-                <div class="navbar-item">
-                    <p><%= current_user.email %></p>
-                </div>
-
-                <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-item' %>
-            <% end %>
-            <div class="navbar-item">
-                <div class="buttons">
-
-                    <% if user_signed_in? %>
-
-                        <%= link_to 'Log out', destroy_user_session_path, method: :delete, :class => 'button is-light' %>
-
-                    <% else %>
-
-                        <%= link_to new_user_registration_path, :class => 'button is-primary' do %>
-                            <strong>Sign up</strong>
-                        <% end %>
-
-                        <%= link_to 'Log in', new_user_session_path, :class => 'button is-light' %>
-
-                    <% end %>
-
-                </div>
+            <div class="navbar-dropdown">
+              <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-item' %>
             </div>
+          </div>
         </div>
+      <% end %>
+      <div class="navbar-item">
+        <div class="buttons">
+
+          <% if user_signed_in? %>
+
+            <%= link_to 'Log out', destroy_user_session_path, method: :delete, :class => 'button is-light' %>
+
+          <% else %>
+
+            <%= link_to new_user_registration_path, :class => 'button is-primary' do %>
+              <strong>Sign up</strong>
+            <% end %>
+
+            <%= link_to 'Log in', new_user_session_path, :class => 'button is-light' %>
+
+          <% end %>
+
+        </div>
+      </div>
     </div>
+  </div>
 </nav>

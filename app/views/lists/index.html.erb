@@ -1,13 +1,15 @@
 <% content_for :styles do %>
-    <style>
-        body {
-            background-color: #fff!important;
-        }
+  <style>
+      body {
+          background-color: #fff !important;
+      }
 
-        .container {
-            margin-top: 40px;
-        }
-    </style>
+      .container {
+          margin: 40px 25px;
+          max-width: unset;
+          width: 100%;
+      }
+  </style>
 <% end %>
 
 <%= tag.div id: :boards, data: { lists: @lists.to_json(include: :cards) } %>

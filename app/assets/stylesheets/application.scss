@@ -13,7 +13,8 @@ body {
 }
 
 .board {
-  overflow-x: auto;
+  display: flex;
+  overflow-x: scroll;
   padding-bottom: 30px;
 }
 
@@ -44,7 +45,7 @@ body {
 }
 
 .button.is-danger {
-  background-color: #f14668!important;
+  background-color: #f14668 !important;
 }
 
 .card {
