@@ -7,75 +7,75 @@ $primary-invert: findColorInvert(#28A55F);
 $primary-light: findLightColor(#28A55F);
 
 body {
-  height: 100vh;
-  font-family: Raleway;
-  background-color: #f1f2f2;
+    height: 100vh;
+    font-family: Raleway;
+    background-color: #f1f2f2;
 }
 
 .board {
-  display: flex;
-  overflow-x: scroll;
-  padding-bottom: 30px;
+    display: flex;
+    overflow-x: scroll;
+    padding-bottom: 30px;
 }
 
 .list {
-  background: #E2E4E6;
-  padding: 10px;
-  border-radius: 3px;
-  margin-right: 20px;
-  vertical-align: top;
-  display: inline-table;
-  max-width: 300px;
-  min-width: 250px;
-  max-height: 60%;
-  overflow-y: scroll;
+    background: #E2E4E6;
+    padding: 10px;
+    border-radius: 3px;
+    margin-right: 20px;
+    vertical-align: top;
+    display: inline-table;
+    max-width: 300px;
+    min-width: 250px;
+    max-height: 60%;
+    overflow-y: scroll;
 }
 
 .new-list {
-  margin-top: -20px
+    margin-top: -20px
 }
 
 .cancel-button {
-  margin-top: 15px;
-  display: inline-flex;
+    margin-top: 15px;
+    display: inline-flex;
 }
 
 .navbar {
-  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
 }
 
 .button.is-danger {
-  background-color: #f14668 !important;
+    background-color: #f14668 !important;
 }
 
 .card {
-  box-shadow: unset;
-  border: #ddd solid 1px;
-  padding-bottom: 10px;
-  background-color: #fff;
-  margin-bottom: 5px;
+    box-shadow: unset;
+    border: #ddd solid 1px;
+    padding-bottom: 10px;
+    background-color: #fff;
+    margin-bottom: 5px;
 }
 
 .card-content {
-  padding: 0.75rem;
+    padding: 0.75rem;
 }
 
 .card-footer {
-  display: block;
-  border-top: unset;
-  margin-top: 20px;
+    display: block;
+    border-top: unset;
+    margin-top: 20px;
 }
 
 .card-footer .button {
-  margin-top: 5px;
+    margin-top: 5px;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 1rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
 
-  background-color: #3b4045;
-  color: #eee;
+    background-color: #3b4045;
+    color: #eee;
 }
